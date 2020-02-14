@@ -22,3 +22,27 @@ serise of rules for normalising expressions into a canonical form.
 Much of the published description of the recommendations is helpfully illustrated by example. What we aim to do here, is compile a
 collection of examples, including some from the recommendations, which can be used as test cases by authors in the bioinformatics
 community to test parsing, transformation and normalisation of variants. We hope to make it a helpful resource for the community.
+
+## Formats
+The examples are given as fragments of JSON, providing genomic (g.), non-coding (n.), coding (c.), and protein (p.) notations
+as appropriate, with canonical and non-canonical forms. For the non-canonical forms, a string or a list of strings may be present
+if the example is presenting multiple representations that should all canonicalise to the same notation.
+
+It is intended that developers will be able to use the individual syntactic forms to test the scope of parsers and interpretation.
+For testing normalisation, all the non-canonical forms should map to the same canonical form.
+
+### Examples
+
+```
+{
+  "canonical": {
+    "coding": "NM_000081.3:c.1884_1886inv",
+    "non-coding": "NM_000081.3:n.2066_2068inv",
+    "protein": "NP_000072.2:p.(Ile628_Ser629delinsMetIle)"
+  }
+  "non-canonical": {
+    "coding": ["NM_000081.3:c.1883_1887delinsTGATA", "NM_000081.3:c.1883_1887inv"],
+    "non-coding": ["NM_000081.3:n.2065_2069delinsTGATA", "NM_000081.3:n.2065_2069inv"]
+  }
+}
+```
